@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -58,8 +57,9 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				neura: {
-					orange: '#FF6B00',
-					yellow: '#FFB800'
+					orange: '#FFC200',
+					yellow: '#FFB800',
+					'orange-gradient': '#FF6B00'
 				}
 			},
 			borderRadius: {

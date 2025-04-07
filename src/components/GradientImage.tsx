@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -8,12 +7,18 @@ interface GradientImageProps {
 
 const GradientImage: React.FC<GradientImageProps> = ({ className }) => {
   return (
-    <div className={cn("relative w-full h-full flex items-center justify-center", className)}>
-      <img 
-        src="/lovable-uploads/9750232b-1b49-434e-9461-19e6e59a45c3.png" 
-        alt="Gradiente Neura Frame Lab" 
-        className="w-full max-w-xl h-auto"
-      />
+    <div className={cn("relative aspect-square w-full max-w-xl mx-auto", className)}>
+      <div className="relative aspect-square w-full rounded-xl overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/img/sqr_anim.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
@@ -16,7 +15,7 @@ const Navbar: React.FC = () => {
       </div>
       <button className="md:hidden text-white">
         <img 
-          src="/lovable-uploads/cf525902-07d0-4cff-8867-9c4c2f2ac003.png" 
+          src="/icon.png" 
           alt="Menu" 
           className="w-6 h-6"
         />

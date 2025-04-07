@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Logo from '@/components/Logo';
@@ -13,35 +12,37 @@ import { Textarea } from '@/components/ui/textarea';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white font-inter font-light">
+    <div className="min-h-screen bg-[#141414] text-white font-inter font-light">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col px-6 py-20 md:py-0">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
-          {/* Left side - Logo and Text */}
-          <div className="w-full md:w-1/2 space-y-6 md:space-y-8">
-            <Logo />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-tight">
-              Onde o sentido<br />
-              encontra a<br />
-              forma
-            </h1>
-            <p className="text-white/70 max-w-md">
-              Somos uma agência de marketing orientada por dados e liderada por humanos, 
-              transformando insights em estratégias eficazes para sua marca.
-            </p>
+      <section className="min-h-screen flex flex-col px-6 pt-24 md:pt-32 pb-20 md:pb-0">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+            {/* Left side - Logo and Text */}
+            <div className="w-full md:w-1/2 space-y-6 md:space-y-8">
+              <Logo size={2.8} />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-tight">
+                Onde o sentido<br />
+                encontra a<br />
+                forma
+              </h1>
+              <p className="text-white/70 max-w-md">
+                Somos uma agência de marketing orientada por dados e liderada por humanos, 
+                transformando insights em estratégias eficazes para sua marca.
+              </p>
+            </div>
+            
+            {/* Right side - Image */}
+            <div className="w-full md:w-1/2">
+              <GradientImage />
+            </div>
           </div>
           
-          {/* Right side - Image */}
-          <div className="w-full md:w-1/2">
-            <GradientImage />
+          {/* Centered Button */}
+          <div className="w-full flex justify-center mt-4 mb-12">
+            <HeroButton href="#contato">ENTRE EM CONTATO</HeroButton>
           </div>
-        </div>
-        
-        {/* Centered Button */}
-        <div className="w-full flex justify-center mt-4 mb-12">
-          <HeroButton href="#contato">ENTRE EM CONTATO</HeroButton>
         </div>
       </section>
       
@@ -65,10 +66,10 @@ const Index = () => {
             </div>
             <div className="h-full flex items-center justify-center">
               <div className="relative">
-                <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-neura-orange to-neura-yellow opacity-30 blur-lg"></div>
+                <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-neura-orange-gradient to-neura-yellow opacity-30 blur-lg"></div>
                 <div className="relative aspect-square w-full max-w-md bg-black/90 p-8 rounded-xl border border-white/10">
                   <div className="flex flex-col h-full justify-center items-center text-center space-y-4">
-                    <div className="text-5xl font-space font-bold text-neura-orange">Data + Human</div>
+                    <div className="text-5xl font-space font-bold text-neura-orange-gradient">Data + Human</div>
                     <p className="text-white/80">Nossa fórmula para resultados extraordinários</p>
                   </div>
                 </div>
@@ -79,7 +80,7 @@ const Index = () => {
       </section>
       
       {/* Services Section */}
-      <section id="servicos" className="py-20 px-6 md:px-12 lg:px-24 bg-black/50">
+      <section id="servicos" className="py-20 px-6 md:px-12 lg:px-24 bg-[#141414]/50">
         <div className="max-w-6xl mx-auto">
           <SectionTitle>Nossos Serviços</SectionTitle>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -104,9 +105,9 @@ const Index = () => {
               icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>}
             />
             <ServiceCard 
-              title="Publicidade Digital" 
-              description="Criamos e gerenciamos campanhas publicitárias eficientes em Google, Meta, LinkedIn e outras plataformas."
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>}
+              title="Produção Audiovisual" 
+              description="Oferecemos serviços completos de produção audiovisual, desde o planejamento até a entrega final. "
+              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2" ry="2"/></svg>}
             />
             <ServiceCard 
               title="Marketing de Conteúdo" 
@@ -121,26 +122,23 @@ const Index = () => {
       <section id="equipe" className="py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
           <SectionTitle>Conheça Nossa Equipe</SectionTitle>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <TeamMember 
-              name="Ana Silva" 
-              role="CEO & Estrategista Digital"
-              imageSrc="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+              name="Koji Ogasawara" 
+              role="Co-Fundador & Diretor De Estratégia"
+              imageSrc="/img/Koji.JPG"
+              imagePosition="top"
             />
             <TeamMember 
-              name="Carlos Mendes" 
-              role="Diretor de Dados & Analytics"
-              imageSrc="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+              name="Zero Koga" 
+              role="Co-Fundador & Especialista Em Mídias"
+              imageSrc="/img/Koga.jpg"
+              imagePosition="top"
             />
             <TeamMember 
-              name="Juliana Costa" 
-              role="Diretora Criativa"
-              imageSrc="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-            />
-            <TeamMember 
-              name="Marcos Oliveira" 
-              role="Especialista em Performance"
-              imageSrc="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+              name="Hassan Deraoui" 
+              role="Co-Fundador & Developer Visual"
+              imageSrc="/img/Hassan.jpg"
             />
           </div>
           <div className="mt-16 text-center">
@@ -155,7 +153,7 @@ const Index = () => {
       </section>
       
       {/* Contact Section */}
-      <section id="contato" className="py-20 px-6 md:px-12 lg:px-24 bg-black/50">
+      <section id="contato" className="py-20 px-6 md:px-12 lg:px-24 bg-[#141414]/50">
         <div className="max-w-5xl mx-auto">
           <SectionTitle>Entre em Contato</SectionTitle>
           <div className="grid md:grid-cols-2 gap-12">
@@ -168,27 +166,12 @@ const Index = () => {
               <div className="space-y-4 text-white/80">
                 <div className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-neura-orange"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  <span>(11) 9876-5432</span>
+                  <span>(11) 93493-8988</span>
                 </div>
                 <div className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-neura-orange"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                  <span>contato@neuraframelab.com.br</span>
+                  <span>hub@neuraframelab.com</span>
                 </div>
-                <div className="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-neura-orange"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Av. Paulista, 1000 - São Paulo, SP</span>
-                </div>
-              </div>
-              <div className="mt-8 flex space-x-4">
-                <a href="#" className="text-white hover:text-neura-orange transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                </a>
-                <a href="#" className="text-white hover:text-neura-orange transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                </a>
-                <a href="#" className="text-white hover:text-neura-orange transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
               </div>
             </div>
             <div>
@@ -222,7 +205,7 @@ const Index = () => {
                 <div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-neura-orange to-neura-yellow hover:opacity-90 text-white font-space font-light py-2"
+                    className="w-full bg-gradient-to-r from-neura-orange-gradient to-neura-yellow hover:opacity-90 text-white font-space font-light py-2"
                   >
                     ENVIAR MENSAGEM
                   </Button>
