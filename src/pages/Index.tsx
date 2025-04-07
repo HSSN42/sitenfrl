@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Logo from '@/components/Logo';
@@ -12,28 +13,28 @@ import { Textarea } from '@/components/ui/textarea';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white font-inter font-light">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col md:flex-row items-center px-6 py-20 md:py-0">
-        <div className="md:w-1/2 space-y-6 md:space-y-8">
+      <section className="min-h-screen flex flex-col items-center px-6 py-20 md:py-0">
+        <div className="space-y-6 md:space-y-8 text-center mb-10">
           <Logo />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-tight">
             Onde o sentido<br />
             encontra a<br />
             forma
           </h1>
-          <p className="text-white/70 max-w-md">
+          <p className="text-white/70 max-w-md mx-auto">
             Somos uma agência de marketing orientada por dados e liderada por humanos, 
             transformando insights em estratégias eficazes para sua marca.
           </p>
-          <div className="pt-4">
-            <HeroButton href="#contato">ENTRE EM CONTATO</HeroButton>
-          </div>
         </div>
-        <div className="md:w-1/2 mt-12 md:mt-0">
+        <div className="w-full max-w-md mx-auto mb-10">
           <GradientImage />
+        </div>
+        <div className="w-full flex justify-center">
+          <HeroButton href="#contato">ENTRE EM CONTATO</HeroButton>
         </div>
       </section>
       
@@ -60,7 +61,7 @@ const Index = () => {
                 <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-neura-orange to-neura-yellow opacity-30 blur-lg"></div>
                 <div className="relative aspect-square w-full max-w-md bg-black/90 p-8 rounded-xl border border-white/10">
                   <div className="flex flex-col h-full justify-center items-center text-center space-y-4">
-                    <div className="text-5xl font-bold text-neura-orange">Data + Human</div>
+                    <div className="text-5xl font-space font-bold text-neura-orange">Data + Human</div>
                     <p className="text-white/80">Nossa fórmula para resultados extraordinários</p>
                   </div>
                 </div>
@@ -214,7 +215,7 @@ const Index = () => {
                 <div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-neura-orange to-neura-yellow hover:opacity-90 text-white font-medium py-2"
+                    className="w-full bg-gradient-to-r from-neura-orange to-neura-yellow hover:opacity-90 text-white font-space font-light py-2"
                   >
                     ENVIAR MENSAGEM
                   </Button>

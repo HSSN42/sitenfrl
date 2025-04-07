@@ -9,13 +9,17 @@ const Navbar: React.FC = () => {
       <Link to="/">
         <Logo variant="cube" />
       </Link>
-      <div className="hidden md:flex space-x-12 text-white uppercase tracking-wider text-sm">
+      <div className="hidden md:flex space-x-12 text-white uppercase tracking-wider text-sm font-space font-light">
         <a href="#sobre" className="hover:text-neura-yellow transition-colors">SOBRE</a>
         <a href="#servicos" className="hover:text-neura-yellow transition-colors">SERVIÇOS</a>
         <a href="#contato" className="hover:text-neura-yellow transition-colors">CONTATO</a>
       </div>
       <button className="md:hidden text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <img 
+          src="/lovable-uploads/cf525902-07d0-4cff-8867-9c4c2f2ac003.png" 
+          alt="Menu" 
+          className="w-6 h-6"
+        />
       </button>
     </nav>
   );
