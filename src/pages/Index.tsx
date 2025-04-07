@@ -1,8 +1,7 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Logo from '@/components/Logo';
-import AnimatedCube from '@/components/AnimatedCube';
+import GradientImage from '@/components/GradientImage';
 import HeroButton from '@/components/HeroButton';
 import SectionTitle from '@/components/SectionTitle';
 import ServiceCard from '@/components/ServiceCard';
@@ -34,7 +33,7 @@ const Index = () => {
           </div>
         </div>
         <div className="md:w-1/2 mt-12 md:mt-0">
-          <AnimatedCube />
+          <GradientImage />
         </div>
       </section>
       
@@ -94,7 +93,7 @@ const Index = () => {
             <ServiceCard 
               title="SEO e Performance Web" 
               description="Otimizamos seu site para mecanismos de busca e melhoramos a experiência do usuário para aumentar conversões."
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6 9.42 8 17.72"/></svg>}
+              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>}
             />
             <ServiceCard 
               title="Publicidade Digital" 
