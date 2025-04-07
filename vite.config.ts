@@ -24,10 +24,19 @@ export default defineConfig(({ mode }) => ({
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name]-[hash][extname]',
+        assetFileNames: (assetInfo) => {
+          // Keep images in their original directory structure
+          if (assetInfo.name && /\.(png|jpe?g|svg|gif|mp4|webp|ico)$/i.test(assetInfo.name)) {
+            return assetInfo.name;
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
       },
     },
+    // Copy the img directory to the output
+    copyPublicDir: true,
   },
+  publicDir: 'img',
 }));
