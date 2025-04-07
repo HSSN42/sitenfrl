@@ -17,23 +17,30 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center px-6 py-20 md:py-0">
-        <div className="space-y-6 md:space-y-8 text-center mb-10">
-          <Logo />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-tight">
-            Onde o sentido<br />
-            encontra a<br />
-            forma
-          </h1>
-          <p className="text-white/70 max-w-md mx-auto">
-            Somos uma agência de marketing orientada por dados e liderada por humanos, 
-            transformando insights em estratégias eficazes para sua marca.
-          </p>
+      <section className="min-h-screen flex flex-col px-6 py-20 md:py-0">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+          {/* Left side - Logo and Text */}
+          <div className="w-full md:w-1/2 space-y-6 md:space-y-8">
+            <Logo />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-tight">
+              Onde o sentido<br />
+              encontra a<br />
+              forma
+            </h1>
+            <p className="text-white/70 max-w-md">
+              Somos uma agência de marketing orientada por dados e liderada por humanos, 
+              transformando insights em estratégias eficazes para sua marca.
+            </p>
+          </div>
+          
+          {/* Right side - Image */}
+          <div className="w-full md:w-1/2">
+            <GradientImage />
+          </div>
         </div>
-        <div className="w-full max-w-md mx-auto mb-10">
-          <GradientImage />
-        </div>
-        <div className="w-full flex justify-center">
+        
+        {/* Centered Button */}
+        <div className="w-full flex justify-center mt-4 mb-12">
           <HeroButton href="#contato">ENTRE EM CONTATO</HeroButton>
         </div>
       </section>
