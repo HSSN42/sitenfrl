@@ -28,11 +28,7 @@ RUN npm install --production
 
 # Copy built files and static assets
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/public ./dist/public
-COPY --from=builder /app/public/img ./dist/img
-
-# Create directory for images if it doesn't exist
-RUN mkdir -p ./dist/img
+COPY --from=builder /app/img ./dist/img
 
 # Install Express and Nodemailer
 RUN npm install express nodemailer
