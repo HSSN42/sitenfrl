@@ -55,5 +55,5 @@ ENV SMTP_FROM=${SMTP_FROM}
 # Expose port
 EXPOSE 80
 
-# Start the server
-CMD ["node", "server.js"] 
+# Start the server using npm start
+CMD ["npm", "start"] 
