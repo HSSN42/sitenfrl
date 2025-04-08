@@ -26,16 +26,31 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --production
 
-# Copy built files and necessary runtime files
+# Copy built files
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/src/app/api ./src/app/api
-COPY .env ./
 
-# Install only the necessary runtime dependencies
+# Install Express and Nodemailer
 RUN npm install express nodemailer
 
-# Create a simple Express server to serve static files and handle API routes
+# Copy server and environment files
 COPY server.js ./
+COPY .env ./
+
+# Add build arguments for SMTP configuration
+ARG SMTP_HOST
+ARG SMTP_PORT
+ARG SMTP_SECURE
+ARG SMTP_USER
+ARG SMTP_PASS
+ARG SMTP_FROM
+
+# Set environment variables
+ENV SMTP_HOST=${SMTP_HOST}
+ENV SMTP_PORT=${SMTP_PORT}
+ENV SMTP_SECURE=${SMTP_SECURE}
+ENV SMTP_USER=${SMTP_USER}
+ENV SMTP_PASS=${SMTP_PASS}
+ENV SMTP_FROM=${SMTP_FROM}
 
 # Expose port
 EXPOSE 80
