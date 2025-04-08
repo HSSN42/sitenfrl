@@ -24,7 +24,7 @@ const Logo: React.FC<LogoProps> = ({ variant = 'horizontal', className, size = 1
     <div className={cn("flex", className)}>
       <div className="relative w-32 h-32">
         <img 
-          src="/lovable-uploads/22497c9d-d6fc-43a4-a1ce-ce030f8cc5cf.png" 
+          src="/img/nrfl.png" 
           alt="Neura Frame Lab Logo" 
           className={cn("w-full h-full object-contain", {
             'scale-[2.8]': size === 2.8
