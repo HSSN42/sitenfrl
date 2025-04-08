@@ -28,7 +28,11 @@ RUN npm install --production
 
 # Copy built files and static assets
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/public ./dist
+COPY --from=builder /app/public ./dist/public
+COPY --from=builder /app/public/img ./dist/img
+
+# Create directory for images if it doesn't exist
+RUN mkdir -p ./dist/img
 
 # Install Express and Nodemailer
 RUN npm install express nodemailer
@@ -52,6 +56,9 @@ ENV SMTP_SECURE=${SMTP_SECURE}
 ENV SMTP_USER=${SMTP_USER}
 ENV SMTP_PASS=${SMTP_PASS}
 ENV SMTP_FROM=${SMTP_FROM}
+
+# Print directory structure for debugging
+RUN ls -la dist && echo "Image directory:" && ls -la dist/img
 
 # Expose port
 EXPOSE 80

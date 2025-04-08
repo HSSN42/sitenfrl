@@ -13,13 +13,20 @@ const port = process.env.PORT || 80;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Log all requests to help debug image loading
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 // Serve static files with caching headers
-app.use(express.static('dist', {
+app.use('/', express.static('dist', {
   maxAge: '1y',
   setHeaders: (res, path) => {
     // Set caching headers for images
     if (path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.png') || path.endsWith('.gif') || path.endsWith('.svg')) {
       res.setHeader('Cache-Control', 'public, max-age=31536000');
+      console.log(`Serving image: ${path}`);
     }
   }
 }));
@@ -82,4 +89,5 @@ app.get('*', (req, res) => {
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+  console.log(`Static files being served from: ${join(__dirname, 'dist')}`);
 }); 
