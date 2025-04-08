@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Logo from '@/components/Logo';
 import GradientImage from '@/components/GradientImage';
@@ -9,8 +9,100 @@ import TeamMember from '@/components/TeamMember';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
+import { Loader2 } from 'lucide-react';
+
+// Add this interface near the top of the file
+interface ContactFormData {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
 
 const Index = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Erro no formulário",
+        description: "Por favor, preencha todos os campos obrigatórios.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Email inválido",
+        description: "Por favor, insira um endereço de email válido.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          to: 'hub@neuraframelab.com'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar mensagem');
+      }
+
+      toast({
+        title: "Mensagem enviada!",
+        description: "Obrigado pelo contato. Retornaremos em breve!",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar",
+        description: "Houve um problema ao enviar sua mensagem. Por favor, tente novamente.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#141414] text-white font-inter font-light">
       <Navbar />
@@ -175,39 +267,62 @@ const Index = () => {
               </div>
             </div>
             <div>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="Nome Completo"
                     className="bg-white/5 border-white/10 placeholder:text-white/50 focus:border-neura-orange"
+                    required
                   />
                 </div>
                 <div>
                   <Input
+                    name="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="E-mail"
                     className="bg-white/5 border-white/10 placeholder:text-white/50 focus:border-neura-orange"
+                    required
                   />
                 </div>
                 <div>
                   <Input
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
                     placeholder="Empresa"
                     className="bg-white/5 border-white/10 placeholder:text-white/50 focus:border-neura-orange"
                   />
                 </div>
                 <div>
                   <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Mensagem"
                     rows={5}
                     className="bg-white/5 border-white/10 placeholder:text-white/50 focus:border-neura-orange"
+                    required
                   />
                 </div>
                 <div>
                   <Button 
                     type="submit" 
                     className="w-full bg-gradient-to-r from-neura-orange-gradient to-neura-yellow hover:opacity-90 text-white font-space font-light py-2"
+                    disabled={isSubmitting}
                   >
-                    ENVIAR MENSAGEM
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        ENVIANDO...
+                      </>
+                    ) : (
+                      'ENVIAR MENSAGEM'
+                    )}
                   </Button>
                 </div>
               </form>
