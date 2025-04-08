@@ -13,8 +13,16 @@ const port = process.env.PORT || 80;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Serve static files
-app.use(express.static('dist'));
+// Serve static files with caching headers
+app.use(express.static('dist', {
+  maxAge: '1y',
+  setHeaders: (res, path) => {
+    // Set caching headers for images
+    if (path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.png') || path.endsWith('.gif') || path.endsWith('.svg')) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+    }
+  }
+}));
 
 // Create email transporter
 const transporter = nodemailer.createTransport({

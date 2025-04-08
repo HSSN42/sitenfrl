@@ -26,8 +26,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --production
 
-# Copy built files
+# Copy built files and static assets
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./dist
 
 # Install Express and Nodemailer
 RUN npm install express nodemailer
