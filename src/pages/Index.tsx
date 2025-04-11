@@ -110,10 +110,12 @@ const Index = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col px-6 pt-24 md:pt-32 pb-20 md:pb-0">
         <div className="max-w-6xl mx-auto w-full">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8 mb-10">
             {/* Left side - Logo and Text */}
-            <div className="w-full md:w-1/2 space-y-6 md:space-y-8">
-              <Logo size={2.8} />
+            <div className="w-full md:w-1/2 flex flex-col gap-6 md:gap-8">
+              <div className="flex">
+                <Logo size={2.8} />
+              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-tight">
                 Onde o sentido<br />
                 encontra a<br />
@@ -126,7 +128,7 @@ const Index = () => {
             </div>
             
             {/* Right side - Image */}
-            <div className="w-full md:w-1/2">
+            <div className="w-full md:w-1/2 flex justify-end">
               <GradientImage />
             </div>
           </div>
