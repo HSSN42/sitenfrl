@@ -7,7 +7,7 @@ interface GradientImageProps {
 
 const GradientImage: React.FC<GradientImageProps> = ({ className }) => {
   return (
-    <div className={cn("relative aspect-square w-full max-w-xl mx-auto", className)}>
+    <div className={cn("relative aspect-square w-full max-w-xl", className)}>
       <div className="relative aspect-square w-full rounded-xl overflow-hidden">
         <video
           autoPlay
