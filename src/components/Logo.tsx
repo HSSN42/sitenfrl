@@ -20,15 +20,15 @@ const Logo: React.FC<LogoProps> = ({ variant = 'horizontal', className, size = 1
     );
   }
 
+  const dimensions = size === 2.8 ? "w-[250px] h-[250px]" : "w-24 h-24";
+
   return (
     <div className={cn("flex", className)}>
-      <div className="relative w-32 h-32">
+      <div className={cn("relative", dimensions)}>
         <img 
           src="/img/nrfl.png" 
           alt="Neura Frame Lab Logo" 
-          className={cn("w-full h-full object-contain", {
-            'scale-[2.8]': size === 2.8
-          })}
+          className="w-full h-full object-contain"
         />
       </div>
     </div>
