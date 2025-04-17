@@ -17,47 +17,16 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM node:18-alpine
+FROM nginx:alpine
 
-# Set working directory
-WORKDIR /app
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Install production dependencies
-COPY package*.json ./
-RUN npm install --production
-
-# Copy built files and static assets
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/img ./dist/img
-
-# Install Express and Nodemailer
-RUN npm install express nodemailer
-
-# Copy server and environment files
-COPY server.js ./
-COPY .env ./
-
-# Add build arguments for SMTP configuration
-ARG SMTP_HOST
-ARG SMTP_PORT
-ARG SMTP_SECURE
-ARG SMTP_USER
-ARG SMTP_PASS
-ARG SMTP_FROM
-
-# Set environment variables
-ENV SMTP_HOST=${SMTP_HOST}
-ENV SMTP_PORT=${SMTP_PORT}
-ENV SMTP_SECURE=${SMTP_SECURE}
-ENV SMTP_USER=${SMTP_USER}
-ENV SMTP_PASS=${SMTP_PASS}
-ENV SMTP_FROM=${SMTP_FROM}
-
-# Print directory structure for debugging
-RUN ls -la dist && echo "Image directory:" && ls -la dist/img
+# Copy built files from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port
 EXPOSE 80
 
-# Start the server using npm start
-CMD ["npm", "start"] 
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"] 

@@ -1,56 +1,10 @@
-# Welcome to your Lovable project
+# Neura Frame Lab Website
 
-## Project info
+## About
 
-**URL**: https://lovable.dev/projects/2cd40514-3eab-4806-8883-1c19f58d9a26
+This is the official website for Neura Frame Lab, a data-driven marketing agency led by humans. The website showcases our services, team, and expertise in digital marketing and data analysis.
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/2cd40514-3eab-4806-8883-1c19f58d9a26) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
@@ -59,15 +13,51 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- i18next for internationalization
+- TanStack React Query for data fetching
 
-## How can I deploy this project?
+## Development Setup
 
-Simply open [Lovable](https://lovable.dev/projects/2cd40514-3eab-4806-8883-1c19f58d9a26) and click on Share -> Publish.
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-## Can I connect a custom domain to my Lovable project?
+Follow these steps:
 
-Yes it is!
+```sh
+# Step 1: Clone the repository
+git clone <repository-url>
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Step 2: Navigate to the project directory
+cd neuraframe-website
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+# Step 3: Install dependencies
+npm install
+
+# Step 4: Start the development server
+npm run dev
+```
+
+## Project Structure
+
+- `/src` - Source code
+  - `/components` - React components
+  - `/pages` - Page components
+  - `/lib` - Utility functions and helpers
+  - `/styles` - Global styles and Tailwind configuration
+
+## Building for Production
+
+To create a production build:
+
+```sh
+npm run build
+```
+
+The build output will be in the `dist` directory.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
