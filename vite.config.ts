@@ -32,8 +32,5 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/[name]-[hash].js',
       },
     },
-    // Copy the img directory to the output
-    copyPublicDir: true,
   },
-  publicDir: 'img',
 }));
